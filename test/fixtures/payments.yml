@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_name: 
+  email: 
+  amount: 
+  credit_card_number: 
+  cvc: 
+  expiration: 2018-12-14
+
+two:
+  full_name: 
+  email: 
+  amount: 
+  credit_card_number: 
+  cvc: 
+  expiration: 2018-12-14
