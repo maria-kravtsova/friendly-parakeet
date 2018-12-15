@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 export default class PaymentForm extends React.Component {
   state = {
@@ -17,34 +18,32 @@ export default class PaymentForm extends React.Component {
 
   render() {
     return (
-      <div style={{ display: "flex", flexDirection: "column", width: "25%" }}>
+      <div>
       <h2>{this.props.nonprofitName}</h2>
       <h3>Donation ${this.props.amount}</h3>
-      <form onSubmit={this.submitEmail}>
-        <div>
-          <label>Name</label>
-          <input type="text" name="name" onChange={this.props.nameHandler} value={this.state.userName} />
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" name="email" onChange={(e) => this.setState({ emailValue: e.target.value })} value={this.state.emailValue}/>
-        </div>
-        <div>
-          <label>Credit Card Number</label>
-          <input type="number" />
-        </div>
-        <div>
-          <label>Expiration</label>
-          <input type="date" />
-        </div>
-        <div>
-          <label>CVC</label>
-          <input type="number" />
-        </div>
-        <div>
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
+      <Form>
+        <FormGroup>
+          <Label>Name</Label>
+          <Input type="text" name="name" onChange={this.props.nameHandler} value={this.state.userName} />
+        </FormGroup>
+        <FormGroup>
+          <Label>Email</Label>
+          <Input type="email" name="email" onChange={(e) => this.setState({ emailValue: e.target.value })} value={this.state.emailValue}/>
+        </FormGroup>
+        <FormGroup>
+          <Label>Credit Card Number</Label>
+          <Input type="number" />
+        </FormGroup>
+        <FormGroup>
+          <Label>Expiration</Label>
+          <Input type="date" />
+        </FormGroup>
+        <FormGroup>
+          <Label>CVC</Label>
+          <Input type="number" />
+        </FormGroup>
+        <Button onClick={this.submitEmail}>Submit</Button>
+      </Form>
     </div>
     )
   }

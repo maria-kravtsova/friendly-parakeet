@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row, Col } from "reactstrap";
 import SelectDonation from "./SelectDonation";
 import PaymentForm from "./PaymentForm";
 import Confirmation from "./Confirmation";
@@ -29,7 +30,7 @@ export default class App extends React.Component {
 
   submitName = e => this.setState({ userName: e.target.value });
 
-  render() {
+  getPage() {
     if (this.state.view === 0) {
       return (
         <SelectDonation
@@ -46,16 +47,30 @@ export default class App extends React.Component {
           amount={this.state.amount}
           nameHandler={this.submitName}
           nextPage={this.nextPage}
-          />
-          );
-        } else {
-          return (
-            <Confirmation
-            amount={this.state.amount}
-            nonprofitName={this.state.nonprofitName}
-            userName={this.state.userName}
+        />
+      );
+    } else {
+      return (
+        <Confirmation
+          amount={this.state.amount}
+          nonprofitName={this.state.nonprofitName}
+          userName={this.state.userName}
         />
       );
     }
+  }
+
+  render() {
+    return (
+      <Container className="mt-3">
+        <Row>
+          <Col sm="12" md={{ size: 6, offset: 3 }}>
+            <div>
+              {this.getPage()}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 }
