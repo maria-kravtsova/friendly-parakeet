@@ -1,16 +1,21 @@
 import React from "react";
 import { Button, Container, Row } from "reactstrap";
+import PropTypes from "prop-types";
 
 const donationAmounts = [25, 50, 75];
 export default class SelectDonation extends React.Component {
-
   getButton() {
     return donationAmounts.map(amount => (
       <Row key={amount} className="mx-auto">
-
-      <Button  outline color="info" value={amount} onClick={this.props.donationHandler} style={{margin: 10}}>
-        ${amount}
-      </Button>
+        <Button
+          outline
+          color="info"
+          value={amount}
+          onClick={this.props.donationHandler}
+          style={{ margin: 10 }}
+        >
+          ${amount}
+        </Button>
       </Row>
     ));
   }
@@ -27,3 +32,10 @@ export default class SelectDonation extends React.Component {
     );
   }
 }
+
+SelectDonation.propTypes = {
+  amount: PropTypes.string,
+  donationHandler: PropTypes.func,
+  nextPage: PropTypes.func,
+  nonprofitName: PropTypes.string
+};
