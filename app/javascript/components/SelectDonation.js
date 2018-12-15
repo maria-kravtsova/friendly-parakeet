@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Button, Container, Row } from "reactstrap";
 import PropTypes from "prop-types";
 
 const donationAmounts = [25, 50, 75];
-export default class SelectDonation extends React.Component {
+class SelectDonation extends React.Component {
   getButton() {
     return donationAmounts.map(amount => (
       <Row key={amount} className="mx-auto">
@@ -33,8 +34,16 @@ export default class SelectDonation extends React.Component {
   }
 }
 
+const mapStateToProps = ({ nonprofit }) => {
+  // This is kind of ugly because it's just name right now, but I wanted to leave
+  // it extandable because I want the amount to come from the model...
+  return { nonprofitName: nonprofit.length > 0 ? nonprofit[0].name : "" };
+};
+
+export default connect(mapStateToProps)(SelectDonation);
+
 SelectDonation.propTypes = {
-  amount: PropTypes.string,
+  amount: PropTypes.number,
   donationHandler: PropTypes.func,
   nextPage: PropTypes.func,
   nonprofitName: PropTypes.string

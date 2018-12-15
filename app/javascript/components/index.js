@@ -1,10 +1,13 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchNonprofit } from '../actions/index'
 import SelectDonation from "./SelectDonation";
 import PaymentForm from "./PaymentForm";
 import Confirmation from "./Confirmation";
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,9 +20,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/nonprofit-name.json").then(res =>
-      res.json().then(res => this.setState({ nonprofitName: res.name }))
-    );
+    this.props.fetchNonprofit();
   }
 
   onAmountSelect = e => {
@@ -35,7 +36,6 @@ export default class App extends React.Component {
       return (
         <SelectDonation
           amount={this.state.amount}
-          nonprofitName={this.state.nonprofitName}
           donationHandler={this.onAmountSelect}
           nextPage={this.nextPage}
         />
@@ -74,3 +74,9 @@ export default class App extends React.Component {
     );
   }
 }
+
+function mapDispathToProps(dispatch) {
+  return bindActionCreators({ fetchNonprofit }, dispatch)
+}
+
+export default connect(null, mapDispathToProps)(App)

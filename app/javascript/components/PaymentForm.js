@@ -65,6 +65,6 @@ export default class PaymentForm extends React.Component {
 PaymentForm.propTypes = {
   nextPage: PropTypes.func,
   nonprofitName: PropTypes.string,
-  amount: PropTypes.string,
+  amount: PropTypes.number,
   nameHandler: PropTypes.func
 };

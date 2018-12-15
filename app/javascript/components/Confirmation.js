@@ -15,7 +15,7 @@ export default class Confirmation extends React.Component {
 }
 
 Confirmation.propTypes = {
-  amount: PropTypes.string,
+  amount: PropTypes.number,
   nonprofitName: PropTypes.string,
   userName: PropTypes.string
 };

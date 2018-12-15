@@ -1,0 +1,1 @@
+export const FETCH_NONPROFIT = 'FETCH_NONPROFIT'

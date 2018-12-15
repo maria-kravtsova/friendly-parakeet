@@ -1,17 +1,39 @@
 {
   "name": "friendly-parakeet",
   "private": true,
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "4.1.3",
+    "jest": "^23.6.0",
     "prop-types": "^15.6.2",
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.3.2",
-    "reactstrap": "^6.5.0"
+    "react-redux": "^6.0.0",
+    "react-test-renderer": "^16.6.3",
+    "reactstrap": "^6.5.0",
+    "redux": "^4.0.1",
+    "redux-promise": "^0.6.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
+  },
+  "jest": {
+    "roots": [
+      "app/javascript"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app/javascript"
+    ],
+    "testRegex": "(\\.(test|spec))\\.(ts|tsx|js)$",
+    "setupFiles": [
+      "./__tests__/jest.setup.js"
+    ]
   }
 }
