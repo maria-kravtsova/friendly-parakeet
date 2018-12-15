@@ -8,7 +8,7 @@ export default class SelectDonation extends React.Component {
     return donationAmounts.map(amount => (
       <Row key={amount} className="mx-auto">
         <Button
-          outline
+          outline={this.props.amount == amount ? false : true}
           color="info"
           value={amount}
           onClick={this.props.donationHandler}
