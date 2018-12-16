@@ -1,18 +1,27 @@
 import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Jumbotron } from "reactstrap";
 
-export default class Confirmation extends React.Component {
+class Confirmation extends React.Component {
   render() {
     return (
       <div>
-        <h2>{this.props.userName}, thank you for your donation</h2>
-        <h2>
-          of {this.props.amount} to {this.props.nonprofitName}
-        </h2>
+        <Jumbotron>
+          <h3>{this.props.userName}, thank you for your donation
+            of ${this.props.amount} to {this.props.nonprofitName}
+          </h3>
+        </Jumbotron>
       </div>
     );
   }
 }
+
+const mapStateToProps = ({ nonprofit }) => {
+  return { nonprofitName: nonprofit.length > 0 ? nonprofit[0].name : "" };
+};
+
+export default connect(mapStateToProps)(Confirmation);
 
 Confirmation.propTypes = {
   amount: PropTypes.number,

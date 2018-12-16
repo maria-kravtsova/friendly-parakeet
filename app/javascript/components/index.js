@@ -11,7 +11,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nonprofitName: "",
       amount: 25,
       userName: "",
       view: 0,
@@ -43,17 +42,16 @@ class App extends React.Component {
     } else if (this.state.view === 1) {
       return (
         <PaymentForm
-          nonprofitName={this.state.nonprofitName}
           amount={this.state.amount}
           nameHandler={this.submitName}
           nextPage={this.nextPage}
+          userName={this.state.userName}
         />
       );
     } else {
       return (
         <Confirmation
           amount={this.state.amount}
-          nonprofitName={this.state.nonprofitName}
           userName={this.state.userName}
         />
       );

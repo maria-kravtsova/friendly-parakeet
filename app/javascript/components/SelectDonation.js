@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Container, Row } from "reactstrap";
+import { Button, Row } from "reactstrap";
 import PropTypes from "prop-types";
 
 const donationAmounts = [25, 50, 75];

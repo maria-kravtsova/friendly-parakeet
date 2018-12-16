@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { connect } from "react-redux";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import PropTypes from "prop-types";
 
-export default class PaymentForm extends React.Component {
+class PaymentForm extends React.Component {
   state = {
     emailValue: "",
     userName: ""
@@ -31,7 +32,7 @@ export default class PaymentForm extends React.Component {
               type="text"
               name="name"
               onChange={this.props.nameHandler}
-              value={this.state.userName}
+              value={this.props.userName}
             />
           </FormGroup>
           <FormGroup>
@@ -61,6 +62,12 @@ export default class PaymentForm extends React.Component {
     );
   }
 }
+
+const mapStateToProps = ({ nonprofit }) => {
+  return { nonprofitName: nonprofit.length > 0 ? nonprofit[0].name : "" };
+};
+
+export default connect(mapStateToProps)(PaymentForm);
 
 PaymentForm.propTypes = {
   nextPage: PropTypes.func,
